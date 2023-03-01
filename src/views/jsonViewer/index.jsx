@@ -1,6 +1,6 @@
 import { JsonViewer } from "@textea/json-viewer";
 import { Col, Row, Input } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const { TextArea } = Input;
 
@@ -27,6 +27,7 @@ function App() {
               placeholder="your json"
               autoSize={{
                 minRows: 10,
+                maxRows: 36,
               }}
               onChange={onJsonChangeHandler}
             />
