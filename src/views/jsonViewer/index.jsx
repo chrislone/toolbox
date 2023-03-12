@@ -1,11 +1,17 @@
-import { JsonViewer } from "@textea/json-viewer";
 import { Col, Row, Input } from "antd";
 import { useState } from "react";
+import VanillaJSONEditor from "./vanillaJSONEditor";
+import "./index.css";
 
 const { TextArea } = Input;
 
 function App() {
-  const [object, setObject] = useState(null);
+  const [showEditor] = useState(true);
+  const [readOnly] = useState(false);
+  const [content, setContent] = useState({
+    json: {},
+    text: undefined,
+  });
 
   const onJsonChangeHandler = (event) => {
     const value = event.target.value;
@@ -15,14 +21,17 @@ function App() {
     } catch (err) {
       console.error(err);
     }
-    setObject(v);
+    setContent({
+      json: v,
+      text: undefined,
+    });
   };
 
   return (
     <>
       <Row style={{ margin: "0 auto", width: "1200px" }}>
         <Col span={12}>
-          <div style={{ padding: "10px" }}>
+          <div className={"text-area-wrapper"}>
             <TextArea
               placeholder="your json"
               autoSize={{
@@ -34,7 +43,15 @@ function App() {
           </div>
         </Col>
         <Col span={12}>
-          <JsonViewer value={object} />
+          {showEditor && (
+            <div className={"text-area-wrapper"}>
+              <VanillaJSONEditor
+                content={content}
+                readOnly={readOnly}
+                onChange={setContent}
+              />
+            </div>
+          )}
         </Col>
       </Row>
     </>
