@@ -7,6 +7,10 @@ const data = [
     title: "JSON viewer",
     navigatTo: "/json-viewer",
   },
+  {
+    title: "Gif",
+    navigatTo: "/gif",
+  },
 ];
 
 function App() {
