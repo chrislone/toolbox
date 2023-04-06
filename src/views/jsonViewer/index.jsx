@@ -36,7 +36,6 @@ function App() {
               placeholder="your json"
               autoSize={{
                 minRows: 10,
-                maxRows: 36,
               }}
               onChange={onJsonChangeHandler}
             />
