@@ -1,4 +1,4 @@
-import { Col, Row, Input } from "antd";
+import { Col, Row } from "antd";
 import { useState } from "react";
 import VanillaJSONEditor from "./vanillaJSONEditor";
 import "./index.css";
@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <Row style={{ margin: "0 auto", width: "1200px" }}>
-        <Col span={24}> 
+        <Col span={24}>
           {showEditor && (
             <div className={"text-area-wrapper"}>
               <VanillaJSONEditor
