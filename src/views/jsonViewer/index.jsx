@@ -11,19 +11,19 @@ function App() {
     text: undefined,
   });
 
-  const onJsonChangeHandler = (event) => {
-    const value = event.target.value;
-    let v = {};
-    try {
-      v = JSON.parse(value);
-    } catch (err) {
-      console.error(err);
-    }
-    setContent({
-      json: v,
-      text: undefined,
-    });
-  };
+  // const onJsonChangeHandler = (event) => {
+  //   const value = event.target.value;
+  //   let v = {};
+  //   try {
+  //     v = JSON.parse(value);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  //   setContent({
+  //     json: v,
+  //     text: undefined,
+  //   });
+  // };
 
   return (
     <>
