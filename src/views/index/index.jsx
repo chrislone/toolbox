@@ -5,7 +5,11 @@ import "./index.css";
 const data = [
   {
     title: "JSON viewer",
-    navigatTo: "/json-viewer",
+    navigateTo: "/json-viewer",
+  },
+  {
+    title: "Gif Compressor",
+    navigateTo: "/gif-compressor",
   },
 ];
 
@@ -17,7 +21,7 @@ function App() {
       <List.Item
         className="list-item"
         onClick={() => {
-          navigate(item.navigatTo);
+          navigate(item.navigateTo);
         }}
       >
         {item.title}
