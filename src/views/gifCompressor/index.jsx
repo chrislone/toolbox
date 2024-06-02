@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Image, Upload, Button } from "antd";
+import "./index.css";
+import { Image, Upload, Button, Row, Col } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import gifsicle from "gifsicle-wasm-browser";
 
@@ -103,34 +104,44 @@ function App() {
   };
 
   return (
-    <>
-      <Upload
-        name="avatar"
-        listType="picture-card"
-        className="avatar-uploader"
-        accept={"image/gif"}
-        showUploadList={true}
-        onPreview={handlePreview}
-        beforeUpload={beforeUploadHandler}
-        onChange={changeHandler}
-      >
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt="avatar"
-            style={{
-              width: "100%",
-            }}
-          />
-        ) : (
-          uploadButton
+    <div className="compressor-wrapper">
+      <Row justify="center" className="rows">
+        <Col>
+          <Upload
+            name="avatar"
+            listType="picture-card"
+            className="avatar-uploader"
+            accept=".gif"
+            showUploadList={true}
+            onPreview={handlePreview}
+            beforeUpload={beforeUploadHandler}
+            onChange={changeHandler}
+          >
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt="avatar"
+                style={{
+                  width: "100%",
+                }}
+              />
+            ) : (
+              uploadButton
+            )}
+          </Upload>
+        </Col>
+      </Row>
+      <Row justify="center" className="rows">
+        <Button onClick={compressHandler}>执行压缩</Button>
+      </Row>
+      <Row justify="center" className="rows">
+        {outputPreviewImageBase64 && (
+          <Image src={outputPreviewImageBase64} width={200}></Image>
         )}
-      </Upload>
-      <Button onClick={compressHandler}>执行压缩</Button>
-      {outputPreviewImageBase64 && (
-        <Image src={outputPreviewImageBase64} width={200}></Image>
-      )}
-      <Button onClick={downloadToLocalHandler}>下载到本地</Button>
+      </Row>
+      <Row justify="center">
+        <Button onClick={downloadToLocalHandler}>下载到本地</Button>
+      </Row>
       {previewImage && (
         <Image
           wrapperStyle={{
@@ -144,7 +155,7 @@ function App() {
           src={previewImage}
         />
       )}
-    </>
+    </div>
   );
 }
 
